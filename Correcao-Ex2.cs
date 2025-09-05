@@ -82,6 +82,7 @@ public class Program
         {
             // 12. apenas valida o objeto todo, mas não valida os atributos
             // Deveriamso utilizar um DTO, ou uma classe de Request para receber dados
+            // Dica de lib: FluentValidation
             if (novaTarefa == null)
             {
                 return Results.Created("O objeto de tarefa não pode ser nulo.");
@@ -93,7 +94,7 @@ public class Program
 
         app.MapGet("/list", () =>
         {
-            return Results.Ok(tarefas);
+            return Results.Ok(tarefas); // É bom usar uma classe de Response para limitar os dados expostos
         });
 
         app.Run();
